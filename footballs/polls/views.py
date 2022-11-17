@@ -4,7 +4,9 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return render(request,"polls/index.html")
-
-def question(request):
-    return HttpResponse("1111111111")
+    name = "Phạm Quốc Hoàng"
+    address = "Quảng Ngãi"
+    phone = 123456789
+    courses = ["Python","PHP","Java","Html"]
+    result = {"name":name,"address":address,"phone":phone,"courses":courses}
+    return render(request,"polls/index.html",result)
