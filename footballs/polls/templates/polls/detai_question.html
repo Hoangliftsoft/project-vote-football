@@ -1,0 +1,23 @@
+{% extends "polls/base.html" %}
+
+{% block detai_question %}
+{% comment %} 
+    {% if detail_question %}
+
+        {% for item in detail_question %}
+            <p>{{item}}</p>
+        {% endfor detail_question %}
+
+    {% endif detail_question %} {% endcomment %}
+
+
+    {% if qs %}
+
+        {% for item in qs.choice_set.all %}
+            <p>{{item.choice_text}}</p>
+        {% endfor %}
+
+    {% endif %}
+
+
+{% endblock detai_question %}

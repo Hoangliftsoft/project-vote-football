@@ -2,13 +2,14 @@
 
 {% block view_question %}
 
-    {{question_list_1.id}}
-    {% for item in question_list %}
-        <h1>{{item.id}}</h1>
-    {% endfor question_list %}
+    {% comment %} {{question_list_1.id}} {% endcomment %}
 
-    {% for item in choice_list %}
-    <h1>{{item.id}}</h1>
-    {% endfor choice_list %}
+    {% if question_list %}
+
+        {% for item in question_list %}
+            <h1>{{item.id}}</h1>
+        {% endfor question_list %}      
+
+    {% endif %}
 
 {% endblock view_question %}

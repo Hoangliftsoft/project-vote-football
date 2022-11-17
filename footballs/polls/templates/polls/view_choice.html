@@ -1,0 +1,11 @@
+{% extends "polls/base.html" %}
+
+{% block view_choice %}
+
+    {% if choice_list %}
+        {% for item in choice_list %}
+            <h1>{{item.id}}</h1>
+        {% endfor choice_list %}
+    {% endif %}
+
+{% endblock view_choice %}

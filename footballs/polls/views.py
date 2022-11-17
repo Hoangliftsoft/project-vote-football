@@ -24,4 +24,11 @@ def view_question(request):
 def view_choice(request):
     choice_list = Choice.objects.all()
     result = {"choice_list":choice_list}
-    return render(request,"polls/view_question.html",result)
+    return render(request,"polls/view_choice.html",result)
+
+
+def detai_question(request,question_id):
+    # detail_question = Question.objects.get(pk=question_id)
+    # return render(request,"polls/detai_question.html",{"detail_question":detail_question})
+    q = Question.objects.get(pk=question_id)
+    return render(request,"polls/detai_question.html",{"qs":q})
