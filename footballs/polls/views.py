@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Question
+from .models import Question,Choice
 # Create your views here.
 
 
@@ -14,9 +14,14 @@ def index(request):
 
 def view_question(request):
     question_list = Question.objects.all()
-    question_list_1 = Question.objects.filter(id = 1).first()
+    # question_list_1 = Question.objects.filter(id = 1).first()
     
     result = {"question_list":question_list}
-    result['question_list_1'] = question_list_1
+    # result['question_list_1'] = question_list_1
 
+    return render(request,"polls/view_question.html",result)
+
+def view_choice(request):
+    choice_list = Choice.objects.all()
+    result = {"choice_list":choice_list}
     return render(request,"polls/view_question.html",result)

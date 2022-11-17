@@ -1,11 +1,14 @@
 {% extends "polls/base.html" %}
 
 {% block view_question %}
+
     {{question_list_1.id}}
     {% for item in question_list %}
-
         <h1>{{item.id}}</h1>
-
     {% endfor question_list %}
+
+    {% for item in choice_list %}
+    <h1>{{item.id}}</h1>
+    {% endfor choice_list %}
 
 {% endblock view_question %}
