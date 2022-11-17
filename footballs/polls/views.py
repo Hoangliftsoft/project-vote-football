@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Question
 # Create your views here.
 
 
@@ -10,3 +11,12 @@ def index(request):
     courses = ["Python","PHP","Java","Html"]
     result = {"name":name,"address":address,"phone":phone,"courses":courses}
     return render(request,"polls/index.html",result)
+
+def view_question(request):
+    question_list = Question.objects.all()
+    question_list_1 = Question.objects.filter(id = 1).first()
+    
+    result = {"question_list":question_list}
+    result['question_list_1'] = question_list_1
+
+    return render(request,"polls/view_question.html",result)
