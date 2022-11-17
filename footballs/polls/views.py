@@ -4,4 +4,4 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Phạm Quốc Hoàng")
+    return render(request,"polls/index.html")
