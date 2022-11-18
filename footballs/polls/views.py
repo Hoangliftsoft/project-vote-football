@@ -32,6 +32,12 @@ def detai_question(request,question_id):
     return render(request,"polls/detai_question.html",{"detail_question":detail_question})
 
 def vote(request,question_id):
-    # q = Question.objects.get(pk=question_id)
-    data = request.POST["choice"]
-    return HttpResponse(data)
+    q = Question.objects.get(pk=question_id)
+    try:
+        data = request.POST["choice"]
+        c = q.choice_set.get(pk = data)
+    except:
+        HttpResponse("Error: Không có data!")
+    c.choice_vote = c.choice_vote + 1
+    c.save()
+    return render(request,"polls/result.html",{"q":q})
