@@ -1,23 +1,20 @@
 {% extends "polls/base.html" %}
 
-{% block detai_question %}
-{% comment %} 
+{% block detail_question %} 
+
     {% if detail_question %}
+    <h1>{{detail_question.question_text}}</h1>
 
-        {% for item in detail_question %}
-            <p>{{item}}</p>
-        {% endfor detail_question %}
-
-    {% endif detail_question %} {% endcomment %}
-
-
-    {% if qs %}
-
-        {% for item in qs.choice_set.all %}
-            <p>{{item.choice_text}}</p>
-        {% endfor %}
-
+        <form action="{% url 'vote' detail_question.id %}" method="post">
+        {% csrf_token %}
+            <ul>
+                {% for item in detail_question.choice_set.all %}
+                    <li><input type="radio" value="{{item.id}}" name="choice">{{item.choice_text}}</li>
+                {% endfor detail_question %}
+                <p><input type="submit" value="Send"></p>
+            </ul>
+        </form>
     {% endif %}
 
 
-{% endblock detai_question %}
+{% endblock detail_question %}

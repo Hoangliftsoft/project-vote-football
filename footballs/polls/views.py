@@ -28,7 +28,10 @@ def view_choice(request):
 
 
 def detai_question(request,question_id):
-    # detail_question = Question.objects.get(pk=question_id)
-    # return render(request,"polls/detai_question.html",{"detail_question":detail_question})
-    q = Question.objects.get(pk=question_id)
-    return render(request,"polls/detai_question.html",{"qs":q})
+    detail_question = Question.objects.get(pk=question_id)
+    return render(request,"polls/detai_question.html",{"detail_question":detail_question})
+
+def vote(request,question_id):
+    # q = Question.objects.get(pk=question_id)
+    data = request.POST["choice"]
+    return HttpResponse(data)
